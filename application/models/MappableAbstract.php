@@ -39,10 +39,10 @@ class Application_Model_MappableAbstract
     public function setOptions(array $options)
     {
         $methods    = get_class_methods($this);
-        $properties = get_class_vars($this);
+        $properties = get_object_vars($this);
         foreach ($options as $key => $value) {
             $method   = 'set' . ucfirst($key);
-            $property = '_' . lcfirst($name);
+            $property = '_' . lcfirst($key);
             if (in_array($method, $methods)) {
                 $this->$method($value);
             } elseif (in_array($property, $properties)) {
@@ -55,9 +55,9 @@ class Application_Model_MappableAbstract
     public function getOptions()
     {
         $config = [];
-        foreach(get_class_vars($this) as $key=>$val) {
-            if(substr($key, 0,1)==='_')) {
-                $con[substr($key,1)] = $val;
+        foreach (get_class_vars($this) as $key=>$val) {
+            if (substr($key, 0, 1) ==='_') {
+                $con[substr($key, 1)] = $val;
             }
         }
         return $config;

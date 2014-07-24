@@ -4,22 +4,25 @@ class Application_Model_AuthorMapper extends Application_Model_MapperAbstract
 {
     protected $_dbMappableClass = 'Application_Model_Author';
 
+    protected $_columnMap = [
+        'id'=>'userId',
+    ];
+
     public function __construct()
     {
         $this->setDbTable('users');
     }
 
-    public function save($author)
+    public function findByName($name)
     {
-        if (!($author instanceof $this->_dbMappableClass)) {
-            throw new InvalidArgumentException(__METHOD__ . " accepts only {$this->_dbMappableClass}");
-        }
-        $data = static::prepForDb($this->getOptions());
-        if (null === ($id = $author->getId())) {
-            unset($data['id']);
-            $this->getDbTable()->insert($data);
+        $select = $this->getDbTable()->select()->where('userName = ?', $name);
+        $row = $this->getDbTable()->fetchRow($select);
+        if (is_null($row)) {
             return;
         }
-        $this->getDbTable()->update($data, array('id = ?' => $id));
+        $entry = new $this->_dbMappableClass;
+        $entry->setOptions($this->remapColumns($row->toArray()));
+        return $entry;
     }
+
 }
