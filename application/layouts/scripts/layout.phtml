@@ -1,0 +1,39 @@
+<?php
+    $this->headTitle("The Hunter’s Hollow Blog")->setSeparator(' - ');
+    $this->headLink()->appendStylesheet($this->baseUrl('css/global.css'));
+    $homeUrl = $this->url([],'default',true);
+?>
+<?= $this->doctype() ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle() ?>
+        <?= $this->headLink() ?>
+    </head>
+    <body itemscope="" itemtype="http://schema.org/WebPage">
+        <header>
+            <h1 itemprop="name"><a href="<?= $homeUrl ?>">The Hunter&rsquo;s Hollow Blog</a></h1>
+            <nav>
+                <?= $this->navigation()->menu() ?>
+            </nav>
+        </header>
+        <aside id="featured"></aside>
+        <main>
+            <?= $this->layout()->content ?>
+        </main>
+        <section id="extras">
+        </section>
+        <footer itemscope="" itemtype="//schema.org/WPFooter">
+            <div class="copyright">
+                &copy;<span itemprop="copyrightYear">2014</span>
+                <span itemprop="copyrightHolder" itemscope="" itemtype="//schema.org/Person">
+                    J.
+                    <span itemprop="givenName">Kenzal</span>
+                    <span itemprop="familyName">Hunter</span>,
+                    Sr.</span>,
+                All rights reserved.
+            </div>
+        </footer>
+        <?= $this->inlineScript() ?>
+    </body>
+</html>
