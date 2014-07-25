@@ -1,0 +1,18 @@
+<article>
+    <header>
+        <h3><?= $this->post->title ?></h3>
+        <div class="author">
+            Author: <hh-user name="<?= $this->post->author->username ?>" />
+        </div>
+        <time><?= $this->date($this->post->date) ?></time>
+    </header>
+    <?= $this->post->body ?>
+    <!--
+    <section>
+        <h4>Comments</h4>
+        <article>
+            <div id="disqus_thread"></div>
+        </article>
+    </section>
+    -->
+</article>
