@@ -2,7 +2,7 @@
 
 class Application_View_Helper_Date extends Zend_View_Helper_Abstract
 {
-    public function Date(DateTimeInterface $date)
+    public function Date(DateTime $date)
     {
         $format = DateTime::RFC850;
         if($date->format('s') == '00') {

@@ -29,7 +29,7 @@ class Application_Model_Post extends Application_Model_MappableAbstract
     public function setDate($date)
     {
         if(is_string($date)) {
-            $date = new DateTimeImmutable($date);
+            $date = new DateTime($date);
         }
         $this->_date = $date;
     }
