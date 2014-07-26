@@ -1,10 +1,10 @@
-<article>
+<article class="blogPost">
     <header>
-        <h3><?= $this->post->title ?></h3>
+        <h3>Day <?= $this->post->getDay() ?>: <?= $this->post->title ?></h3>
         <div class="author">
             Author: <hh-user name="<?= $this->post->author->username ?>" />
         </div>
-        <time><?= $this->date($this->post->date) ?></time>
+        <div>Posted: <time><?= $this->date($this->post->date) ?></time></div>
     </header>
     <?= $this->post->body ?>
     <!--

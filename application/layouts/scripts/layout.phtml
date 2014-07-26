@@ -13,16 +13,43 @@
     <body itemscope="" itemtype="http://schema.org/WebPage">
         <header>
             <h1 itemprop="name"><a href="<?= $homeUrl ?>">The Hunter&rsquo;s Hollow Blog</a></h1>
-            <nav>
-                <?= $this->navigation()->menu() ?>
-            </nav>
         </header>
-        <aside id="featured"></aside>
-        <main>
-            <?= $this->layout()->content ?>
-        </main>
-        <section id="extras">
-        </section>
+        <nav>
+            <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Archives</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="subscribe" href="#">Subscribe via RSS</a></li>
+            </ul>
+        </nav>
+        <aside id="intro">
+            <header>
+                <h2>A Blog for the Hunter family in their new home</h2>
+            </header>
+            <p>We are the Hunters, lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</p>
+        </aside>
+        <div id="content">
+            <main>
+                <?= $this->layout()->content ?>
+            </main>
+            <section id="extras">
+            </section>
+            <aside class="sidebar">
+                <article id="recent">
+                    <h2>Recent Posts</h2>
+                    <ul>
+                        <li>Final Post</li>
+                        <li>Penultimate Post</li>
+                        <li>3rd Most Recent</li>
+                    </ul>
+                </article>
+                <article id="twitFeed">
+                    <a class="twitter-timeline" width="290" href="https://twitter.com/HHTwitFeed" data-widget-id="492736720295559168">Tweets by @HHTwitFeed</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </article>
+            </aside>
+        </div>
         <footer itemscope="" itemtype="//schema.org/WPFooter">
             <div class="copyright">
                 Copyright <span title="<?= APPLICATION_ENV ?>">&copy;</span><span itemprop="copyrightYear">2014</span>

@@ -53,5 +53,12 @@ class Application_Model_Post extends Application_Model_MappableAbstract
         $this->_title = (string)$title;
     }
 
+    public function getDay()
+    {
+        $purchaseDate = new DateTime('2014-07-15');
+        $difference = $this->date->diff($purchaseDate);
+        return $difference->days;
+    }
+
 
 }
