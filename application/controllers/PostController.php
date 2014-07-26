@@ -25,10 +25,12 @@ class PostController extends Zend_Controller_Action
 
         // Zend_Debug::dump($this->getRequest);die;
         if(    is_null($postId)
-            && is_null($year)
-            && is_null($month)
-            && is_null($day)
-            && is_null($title)
+            && (
+                    is_null($year)
+                 || is_null($month)
+                 || is_null($day)
+                 || is_null($title)
+                )
         ) {
             $this->redirect('/');
             return;
@@ -37,6 +39,10 @@ class PostController extends Zend_Controller_Action
         $post = is_null($postId)
               ? $this->posts->findByDateTitle("{$year}-{$month}-{$day}", $title)
               : $this->posts->find($postId);
+
+        if(!$post) {
+            throw new Zend_Controller_Action_Exception('Post Not Found', 404);
+        }
         $this->view->post = $post;
     }
 

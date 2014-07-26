@@ -60,5 +60,11 @@ class Application_Model_Post extends Application_Model_MappableAbstract
         return $difference->days;
     }
 
+    public function getSlug()
+    {
+        $mapper = new Application_Model_PostMapper;
+        $db = $mapper->getDbTable()->getAdapter();
+        return $db->fetchOne('SELECT slugify(?) as slug;', $this->title);
+    }
 
 }

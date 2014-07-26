@@ -9,7 +9,7 @@ class Application_View_Helper_PostUrl extends Zend_View_Helper_Abstract
                 'year'  => $post->date->format('Y'),
                 'month' => $post->date->format('m'),
                 'day'   => $post->date->format('d'),
-                'title' => $post->title,
+                'title' => $post->getSlug(),
             ],
             'post'
         );

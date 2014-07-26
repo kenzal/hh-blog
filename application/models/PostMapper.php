@@ -24,7 +24,7 @@ class Application_Model_PostMapper extends Application_Model_MapperAbstract
         $date = new DateTime($date);
         $select = $this->getDbTable()->select();
         $select->where('date(`date`) = ?', $date->format('Y-m-d'))
-               ->where('title = ?', $title);
+               ->where('slugify(title) = slugify(?)', $title);
         return current($this->fetchAll($select));
     }
 

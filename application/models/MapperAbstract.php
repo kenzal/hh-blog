@@ -5,6 +5,7 @@ abstract class Application_Model_MapperAbstract
     protected $_dbTable;
     protected $_dbMappableClass;
     protected $_columnMap = [];
+    protected $_additionalFields = [];
 
     public function setDbTable($dbTable)
     {
