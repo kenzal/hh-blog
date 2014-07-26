@@ -39,7 +39,7 @@ abstract class Application_Model_MapperAbstract
         throw new InvalidArgumentException('Argument must be a valid class name or an object of the inteded class');
     }
 
-    
+
     public function save($mappable)
     {
         if (!($mappable instanceof $this->_dbMappableClass)) {
@@ -67,9 +67,14 @@ abstract class Application_Model_MapperAbstract
         return $entry;
     }
 
-    public function fetchAll()
+    public function fetchAll($where = null, $order = null, $count = null, $offset = null)
     {
-        $resultSet = $this->getDbTable()->fetchAll();
+        $resultSet = $this->getDbTable()->fetchAll(
+            $where,
+            $order,
+            $count,
+            $offset
+        );
         $entries   = [];
         foreach ($resultSet as $row) {
             $entry = new $this->_dbMappableClass;

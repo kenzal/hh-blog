@@ -2,6 +2,8 @@
     $this->headTitle("The Hunter’s Hollow Blog")->setSeparator(' - ');
     $this->headLink()->appendStylesheet($this->baseUrl('css/global.css'));
     $homeUrl = $this->url([],'default',true);
+
+
 ?>
 <?= $this->doctype() ?>
 <html lang="en">
@@ -37,15 +39,10 @@
             </section>
             <aside class="sidebar">
                 <article id="recent">
-                    <h2>Recent Posts</h2>
-                    <ul>
-                        <li>Final Post</li>
-                        <li>Penultimate Post</li>
-                        <li>3rd Most Recent</li>
-                    </ul>
+                    <?= $this->partial("partials/recent.phtml") ?>
                 </article>
                 <article id="twitFeed">
-                    <a class="twitter-timeline" width="290" href="https://twitter.com/HHTwitFeed" data-widget-id="492736720295559168">Tweets by @HHTwitFeed</a>
+                    <a class="twitter-timeline"  href="https://twitter.com/HHTwitFeed" data-widget-id="492736720295559168">Tweets by @HHTwitFeed</a>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </article>
             </aside>

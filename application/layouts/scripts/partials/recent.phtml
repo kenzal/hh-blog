@@ -1,0 +1,15 @@
+<?php
+    $postMap = new Application_Model_PostMapper;
+    $posts = $postMap->fetchAll('not isDraft', 'date DESC', 5);
+?>
+<h2>Recent Posts</h2>
+<ul>
+    <?php foreach ($posts as $post): ?>
+        <li>
+            <span class="dayNote">Day <?= $post->getDay() ?>: </span>
+            <a href="<?= $this->PostUrl($post) ?>">
+                <?= $post->title ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

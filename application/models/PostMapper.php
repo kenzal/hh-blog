@@ -19,4 +19,13 @@ class Application_Model_PostMapper extends Application_Model_MapperAbstract
         return;
     }
 
+    public function findByDateTitle($date, $title)
+    {
+        $date = new DateTime($date);
+        $select = $this->getDbTable()->select();
+        $select->where('date(`date`) = ?', $date->format('Y-m-d'))
+               ->where('title = ?', $title);
+        return current($this->fetchAll($select));
+    }
+
 }

@@ -1,6 +1,6 @@
 <article class="blogPost">
     <header>
-        <h3>Day <?= $this->post->getDay() ?>: <?= $this->post->title ?></h3>
+        <h3><a href="<?= $this->postUrl($this->post) ?>">Day <?= $this->post->getDay() ?>: <?= $this->post->title ?></a></h3>
         <div class="author">
             Author: <hh-user name="<?= $this->post->author->username ?>" />
         </div>

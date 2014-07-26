@@ -33,10 +33,6 @@ p {
     text-indent: 2em;
 }
 
-header p {
-    text-indent: 0;
-}
-
 nav {
     position: absolute;
     left: 0;
@@ -123,7 +119,20 @@ main {
     padding-right: 22px;
 }
 
+#twitter-widget-0 {
+    width: 275px !important;
+}
+
+header a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 #sidebar {
     display: table-cell;
     width: 300px;
+}
+
+.blogPost+.blogPost {
+    border-top: 3px double gray;
 }
