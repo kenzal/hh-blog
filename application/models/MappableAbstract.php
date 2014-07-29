@@ -55,9 +55,9 @@ class Application_Model_MappableAbstract
     public function getOptions()
     {
         $config = [];
-        foreach (get_class_vars($this) as $key=>$val) {
+        foreach (get_object_vars($this) as $key=>$val) {
             if (substr($key, 0, 1) ==='_') {
-                $con[substr($key, 1)] = $val;
+                $config[substr($key, 1)] = $val;
             }
         }
         return $config;

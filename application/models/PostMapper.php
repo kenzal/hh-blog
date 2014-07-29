@@ -8,10 +8,18 @@ class Application_Model_PostMapper extends Application_Model_MapperAbstract
         'id'=>'postId',
         'author'=>'authorId',
     ];
+    protected $_dbDefaults = [];
 
     public function __construct()
     {
         $this->setDbTable('posts');
+        $currentTimestamp = new Zend_Db_Expr('CURRENT_TIMESTAMP');
+        $this->_dbDefaults = [
+            'date'     => $currentTimestamp,
+            'isDraft'  => false,
+            'created'  => $currentTimestamp,
+            'modified' => $currentTimestamp,
+        ];
     }
 
     public function findByDay($day)

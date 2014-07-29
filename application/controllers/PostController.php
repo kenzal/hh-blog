@@ -14,7 +14,6 @@ class PostController extends Zend_Controller_Action
         $this->redirect('/');
     }
 
-
     public function postAction()
     {
         $postId = $this->getParam('postId', null);
@@ -46,6 +45,28 @@ class PostController extends Zend_Controller_Action
         $this->view->post = $post;
     }
 
+    public function newAction()
+    {
+        $request = $this->getRequest();
+        $form    = new Application_Form_Post;
+
+        if ($request->isPost()) {
+            if ($form->isValid($request->getPost())) {
+                $post = new Application_Model_Post($form->getValues());
+                $post->author = 1;
+                $mapper = new Application_Model_PostMapper();
+                $mapper->save($post);
+                return $this->redirector('index');
+            }
+        }
+
+        $this->view->form = $form;
+    }
+
 
 }
+
+
+
+
 

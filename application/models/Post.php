@@ -8,6 +8,8 @@ class Application_Model_Post extends Application_Model_MappableAbstract
     protected $_id;
     protected $_isDraft;
     protected $_title;
+    protected $_created;
+    protected $_modified;
 
     public function setAuthor($author)
     {

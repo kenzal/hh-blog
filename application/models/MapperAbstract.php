@@ -47,9 +47,10 @@ abstract class Application_Model_MapperAbstract
             $msg = __METHOD__ . " accepts only {$this->_dbMappableClass}";
             throw new InvalidArgumentException($msg);
         }
-        $data = $this->prepForDb($this->getOptions());
-        if (null === ($key = $mappable->getId())) {
+        $data = $this->prepForDb($mappable->getOptions());
+        if (null === ($key = $mappable->id)) {
             unset($data[$this->_columnMap['id']]);
+
             $this->getDbTable()->insert($data);
             return;
         }
@@ -92,9 +93,14 @@ abstract class Application_Model_MapperAbstract
             if(array_key_exists($key, $this->_columnMap)) {
                 $key = $this->_columnMap[$key];
             }
+            if(is_null($value) && array_key_exists($key, $this->_dbDefaults)) {
+                $value = $this->_dbDefaults[$key];
+            }
             if ($value instanceof DateTimeInterface || $value instanceof Zend_Date) {
                 $newValue[$key] = new Zend_Db_Expr("FROM_UNIXTIME({$value->getTimestamp()})");
-            }
+                continue;
+            } 
+            $newValues[$key] = $value;
         }
         return $newValues;
     }
