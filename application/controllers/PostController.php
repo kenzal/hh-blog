@@ -56,7 +56,7 @@ class PostController extends Zend_Controller_Action
                 $post->author = 1;
                 $mapper = new Application_Model_PostMapper();
                 $mapper->save($post);
-                return $this->redirector('index');
+                return $this->redirect('index');
             }
         }
 
